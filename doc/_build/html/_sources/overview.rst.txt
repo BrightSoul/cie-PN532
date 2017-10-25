@@ -10,7 +10,8 @@ Questa libreria dipende dalla più complessa e articolata libreria Adafruit_PN53
 
     https://github.com/adafruit/Adafruit-PN532
 
-È fondamentale installare entrambe le libreire Adafruit_PN532 e cie_PN532 nella directory ``/libraries`` di Arduino. Puoi seguire le istruzioni anche sulla guida ufficiale messa a diposizione da Arduino.
+È fondamentale installare entrambe le libreire Adafruit_PN532 e cie_PN532 nella directory ``/libraries`` di Arduino. 
+Puoi seguire le istruzioni anche sulla guida ufficiale messa a diposizione da Arduino.
 
     https://www.arduino.cc/en/Guide/Libraries
 
@@ -80,5 +81,5 @@ Dopo aver fatto ciò, nella sezione *loop*, bisogna aspettare che venga letta la
 Altri esempi
 --------------
 
-Per caricare altri esempi dalla libreria è possibile farlo direttamente dall'IDE di Arduino. 
-In particolare bisognerà accedere al seguente menù: ``File menu -> Examples -> cie_532`` e caricare quindi gli sckecth desiderati
+Per caricare altri esempi dalla libreria è possibile farlo direttamente dall’IDE di Arduino.
+In particolare essi sono reperibili dal menù: ``File menu -> Examples -> cie_532``.
