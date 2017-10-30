@@ -4,20 +4,20 @@ Documentazione
     *«Una documentazione per domarli, una documentazione per trovarli,
     una documentazione per ghermirli e nell'oscurità incatenarli»*
 
-Questa documentazione è stata generata mediante l’ausilio del software Sphinx, capace di generare pagine ``HTML`` 
+Questa documentazione è stata generata mediante l’ausilio del software Sphinx, capace di generare pagine ``HTML``
 responsive e con numerose possibilità di personalizzazione compatibili con qualsiasi browser. 
-Di fatti si dimostra estremamente considerevole se si ha l'obbiettivo di ottenere una documentazione 
-esteticamente gradevole (con numerosi temi già pronti per essere usati) e perfettamente leggibile.
+Di fatti si dimostra estremamente considerevole se si ha l'obbiettivo di ottenere una documentazione esteticamente 
+gradevole, con numerosi temi già pronti per essere usati, e perfettamente leggibile.
 
 Simbiosi con Breathe
 ---------------------------
 
-Obbiettivo primario di una buona documentazione è raccogliere e catalogare tutte le informazioni relative all'argomento trattato. 
-Presa questa definizione, la soluzione che abbiamo adottato per poter includere nella documentazione anche i commenti del 
-nostro codice è stata quella di adoperare Breathe. Breathe è una libreria che permette di creare un *bridge* tra Sphinx e 
-la formattazione dei commenti in Doxygen. In questo modo la documentazione sarà strettamente correlata al codice e ad ogni nuovo update del codice, 
+Obbiettivo primario di una buona documentazione è raccogliere e catalogare tutte le informazioni relative 
+all'argomento trattato. Presa questa definizione, la soluzione che abbiamo adottato per poter includere 
+nella documentazione anche i commenti del nostro codice è stata quella di adoperare Breathe. 
+Breathe è una libreria che permette di creare un *bridge* tra Sphinx e la formattazione dei commenti in Doxygen. 
+In questo modo la documentazione sarà strettamente correlata al codice e ad ogni nuovo update del codice, 
 la documentazione verrà aggiornata in maniera totalmente autonoma.
-
 
 Creazione della Documentazione
 -------------------------------
@@ -27,7 +27,7 @@ attraverso il seguente comando:
 
     ``pip install breathe``
 
-Dopo aver corretamente installato il software richiesto bisognerà inizializzare Sphnix, quindi spostarsi 
+Dopo aver correttamente installato il software richiesto bisognerà inizializzare Sphinx, quindi spostarsi 
 nella ``directory`` in cui si vuole installare la *documentazione* stessa e lanciare il seguente comando:
 
     ``sphinx-quickstart``
@@ -39,7 +39,7 @@ Per generare quest'ultima bisognerà utilizzare il comando [1]_:
 
     ``make html``
 
-L'intera documentazione quindi sarà modificabile semplicemente mediante la modfica e la creazione di file 
+L'intera documentazione quindi sarà modificabile semplicemente mediante la modifica e la creazione di file 
 con estensione **.rst** [2]_. 
 
 Collegamenti

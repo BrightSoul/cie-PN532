@@ -1,0 +1,5 @@
+{
+    "port": "COM5",
+    "board": "arduino:avr:uno",
+    "sketch": "examples\\cie-EF_SOD\\cie-EF_SOD.ino"
+}

@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "D:\\Programmi\\Arduino\\hardware\\arduino\\avr\\cores\\arduino"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": false,
+                "path": [
+                    "D:\\Programmi\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
+                    "${workspaceRoot}"
+                ]
+            },
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 3
+}

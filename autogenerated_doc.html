@@ -146,12 +146,10 @@
                       <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Introduzione</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CIE-PN532 API per Arduino</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#utilizzo-di-sphnix-e-doxygen">Utilizzo di Sphnix e Doxygen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#application-programming-interface">Application Programming Interface</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="step_by_step.html">Documentazione</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 </ul>
 
                     
@@ -232,8 +230,7 @@
                             
   <div class="section" id="cie-pn532-api-per-arduino">
 <h1>CIE-PN532 API per Arduino<a class="headerlink" href="#cie-pn532-api-per-arduino" title="Link a questa intestazione">¶</a></h1>
-<div class="section" id="utilizzo-di-sphnix-e-doxygen">
-<h2>Utilizzo di Sphnix e Doxygen<a class="headerlink" href="#utilizzo-di-sphnix-e-doxygen" title="Link a questa intestazione">¶</a></h2>
+<div class="section" id="utilizzo-di-sphinx-e-doxygen">
 <p>Di seguito è possibile trovare tutte le <strong>API</strong> presenti nel codice.
 Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p>
 </div>
@@ -297,7 +294,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">filePath</span></code>: a structure indicating the parent Dedicated File (either ROOT_MF or CIE_DF), the selection mode (either SELECT_BY_EFID or SELECT_BY_SFI) and the file identifier (either a sfi or an efid) </li>
-<li><code class="docutils literal"><span class="pre">rootTriple</span></code>: The pointer to the root triple which will contain all of the others as its children </li>
+<li><code class="docutils literal"><span class="pre">rootTriple</span></code>: The pointer to the root triple which will contain all the others as its children </li>
 <li><code class="docutils literal"><span class="pre">length</span></code>: The pointer to the outer length (tag octets + length octets + content length) </li>
 <li><code class="docutils literal"><span class="pre">maxDepth</span></code>: How deep down in the hierarchy we should look for triples</li>
 </ul>
@@ -581,11 +578,11 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Reads the binary content the EF_DH elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The lenght of the file</li>
+<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
 </ul>
 </dd>
 </dl>
@@ -598,11 +595,11 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Reads the binary content of the EF_ATR elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The lenght of the file</li>
+<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
 </ul>
 </dd>
 </dl>
@@ -615,11 +612,11 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Reads the binary content of the SN_ICC elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The lenght of the file</li>
+<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
 </ul>
 </dd>
 </dl>
@@ -632,11 +629,11 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Reads the binary content of the EF_ID_Servizi elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The lenght of the file</li>
+<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
 </ul>
 </dd>
 </dl>
@@ -649,11 +646,11 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Reads the binary content of the EF_Int_Kpub elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The lenght of the file</li>
+<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
 </ul>
 </dd>
 </dl>
@@ -666,11 +663,11 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Reads the binary content of the EF_Servizi_Int_Kpub elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The lenght of the file</li>
+<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
 </ul>
 </dd>
 </dl>
@@ -683,7 +680,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Reads the binary content of an Elementary File given its Dedicated File and EFID or SFI identifier. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">df</span></code>: The containing Dedicated File (either ROOT_MF or CIE_DF) </li>
@@ -703,7 +700,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Reads the binary content of the currently selected Elementary File. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">filePath</span></code>: a structure indicating the parent Dedicated File (either ROOT_MF or CIE_DF), the selection mode (either SELECT_BY_EFID or SELECT_BY_SFI) and the file identifier (either a sfi or an efid) </li>
@@ -727,11 +724,11 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Print the binary content of the EF_SOD elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The lenght of the file</li>
+<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
 </ul>
 </dd>
 </dl>
@@ -744,7 +741,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Parses the BER content of the EF_SOD file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">callback</span></code>: A function which will be invoked when a new triple has been read</li>
@@ -774,7 +771,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Selects a dedicated file in the IAS application. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">df</span></code>: The Dedicated File (either ROOT_MF or CIE_DF)</li>
@@ -790,7 +787,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Selects an Elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">df</span></code>: The containing Dedicated File (either ROOT_MF or CIE_DF) </li>
@@ -818,7 +815,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Selects the ROOT Master File. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 </dl>
 </p>
 </dd></dl>
@@ -840,7 +837,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd><p>Sets the length value of a currently selected Elementary File. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>A boolean value indicating whether the operation suceeded or not </dd>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">filePath</span></code>: a structure indicating the parent Dedicated File (either ROOT_MF or CIE_DF), the selection mode (either SELECT_BY_EFID or SELECT_BY_SFI) and the file identifier (either a sfi or an efid) </li>
@@ -920,7 +917,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dt>
 <span class="target" id="cie__AtrReader_8cpp"></span><em>file</em> <code class="descname">cie_AtrReader.cpp</code></dt>
 <dd><em>#include «cie_AtrReader.h»</em><p>
-Reads and parses anAtr encoded binary content<dl class="docutils">
+Reads and parses an Atr encoded binary content<dl class="docutils">
 <dt><strong>Author</strong></dt>
 <dd>Developers Italia  BSD (see License)</dd>
 </dl>
@@ -1153,8 +1150,8 @@ This is a library for the PN532 NFC/RFID breakout boards This library works with
 
 </div>
 </dd></dl>
-<!-- 
-<dl class="file">
+
+<!-- <dl class="file">
 <dt>
 <span class="target" id="README_8md"></span><em>file</em> <code class="descname">README.md</code></dt>
 <dd></dd></dl>
@@ -1229,8 +1226,8 @@ void loop(void) {
 <li>Technical specification for the European Card for e-Services and National e-ID Applications <a class="reference external" href="http://www.unsads.com/specs/IASECC/IAS_ECC_v1.0.1_UK.pdf">http://www.unsads.com/specs/IASECC/IAS_ECC_v1.0.1_UK.pdf</a></li>
 <li>Specifiche tecniche del documento digitale unificato (italian) <a class="reference external" href="http://www.agid.gov.it/sites/default/files/leggi_decreti_direttive/specifiche_tecniche_del_documento_digitale_unificato_v.1.0.0.pdf">http://www.agid.gov.it/sites/default/files/leggi_decreti_direttive/specifiche_tecniche_del_documento_digitale_unificato_v.1.0.0.pdf</a> </li>
 </ul>
-</p> -->
-</dd></dl>
+</p>
+</dd></dl> -->
 
 </div>
 </div>
