@@ -36,3 +36,11 @@
 
 #Build output
 build/
+
+#Build documentation
+docs/_build/*
+!docs/_build/readme.txt
+docs/_doxygen/*
+!docs/_doxygen/readme.txt
+docs/_static/*
+!docs/_static/readme.txt

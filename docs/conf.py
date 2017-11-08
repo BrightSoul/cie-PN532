@@ -32,7 +32,7 @@ extensions = ["breathe"]
 
 breathe_projects = {
     # c:\Users\fcopp\Documents\Progetti\cie-PN532\xml
-    "cie-PN532":"../xml/"
+    "cie-PN532":"./_doxygen/xml/"
 }
 
 breathe_default_project = "cie-PN532"
