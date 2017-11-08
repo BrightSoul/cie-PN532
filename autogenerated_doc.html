@@ -150,6 +150,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="step_by_step.html">Documentazione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 </ul>
 
                     
@@ -230,10 +231,8 @@
                             
   <div class="section" id="cie-pn532-api-per-arduino">
 <h1>CIE-PN532 API per Arduino<a class="headerlink" href="#cie-pn532-api-per-arduino" title="Link a questa intestazione">¶</a></h1>
-<div class="section" id="utilizzo-di-sphinx-e-doxygen">
 <p>Di seguito è possibile trovare tutte le <strong>API</strong> presenti nel codice.
 Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p>
-</div>
 <div class="section" id="application-programming-interface">
 <h2>Application Programming Interface<a class="headerlink" href="#application-programming-interface" title="Link a questa intestazione">¶</a></h2>
 <dl class="class">
@@ -294,8 +293,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">filePath</span></code>: a structure indicating the parent Dedicated File (either ROOT_MF or CIE_DF), the selection mode (either SELECT_BY_EFID or SELECT_BY_SFI) and the file identifier (either a sfi or an efid) </li>
-<li><code class="docutils literal"><span class="pre">rootTriple</span></code>: The pointer to the root triple which will contain all the others as its children </li>
-<li><code class="docutils literal"><span class="pre">length</span></code>: The pointer to the outer length (tag octets + length octets + content length) </li>
+<li><code class="docutils literal"><span class="pre">cieBerTripleCallbackFunc</span></code>: A callback function that will be invoked each time a triple has been found </li>
 <li><code class="docutils literal"><span class="pre">maxDepth</span></code>: How deep down in the hierarchy we should look for triples</li>
 </ul>
 </dd>
@@ -323,8 +321,8 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="_CPPv2N13cie_BerReader10readTripleEK10cie_EFPathRP13cie_BerTripleP4word">
-<span id="cie_BerReader::readTriple__cie_EFPathC.cie_BerTriplePR.wordP"></span><span class="target" id="classcie__BerReader_1a195d876c24c8b2e64adbd13c81a62da5"></span>bool <code class="descname">readTriple</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv210cie_EFPath" title="cie_EFPath">cie_EFPath</a> <em>filePath</em>, <a class="reference internal" href="#_CPPv213cie_BerTriple" title="cie_BerTriple">cie_BerTriple</a> *&amp;<em>triple</em>, word *<em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N13cie_BerReader10readTripleEK10cie_EFPathRP13cie_BerTripleP4word" title="Link a questa definizione">¶</a><br /></dt>
+<dt id="_CPPv2N13cie_BerReader10readTripleEK10cie_EFPathP13cie_BerTripleP4word">
+<span id="cie_BerReader::readTriple__cie_EFPathC.cie_BerTripleP.wordP"></span><span class="target" id="classcie__BerReader_1a53cee28c5ba33ac0e14903316331206c"></span>bool <code class="descname">readTriple</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv210cie_EFPath" title="cie_EFPath">cie_EFPath</a> <em>filePath</em>, <a class="reference internal" href="#_CPPv213cie_BerTriple" title="cie_BerTriple">cie_BerTriple</a> *<em>triple</em>, word *<em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N13cie_BerReader10readTripleEK10cie_EFPathP13cie_BerTripleP4word" title="Link a questa definizione">¶</a><br /></dt>
 <dd><p>Extracts informations from a single triple. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
@@ -367,6 +365,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal"><span class="pre">filePath</span></code>: a structure indicating the parent Dedicated File (either ROOT_MF or CIE_DF), the selection mode (either SELECT_BY_EFID or SELECT_BY_SFI) and the file identifier (either a sfi or an efid) </li>
+<li><code class="docutils literal"><span class="pre">contentOffset</span></code>: The pointer to binary content offset </li>
 <li><code class="docutils literal"><span class="pre">contentLength</span></code>: The pointer to binary content length </li>
 <li><code class="docutils literal"><span class="pre">lengthOctets</span></code>: The pointer to the number of length octets found in this triple)</li>
 </ul>
@@ -388,7 +387,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <li><code class="docutils literal"><span class="pre">classification</span></code>: The pointer to the detected class value </li>
 <li><code class="docutils literal"><span class="pre">encoding</span></code>: The pointer to the detected binary content encoding (either primitive or constructed) </li>
 <li><code class="docutils literal"><span class="pre">type</span></code>: The pointer to the detected type value </li>
-<li><code class="docutils literal"><span class="pre">tagOctets</span></code>: The pointer to the number of tag octets found in this triple </li>
+<li><code class="docutils literal"><span class="pre">tagOctets</span></code>: The pointer to the number of tag octets found in this triple</li>
 </ul>
 </dd>
 </dl>
@@ -532,6 +531,169 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 </dd></dl>
 
 <dl class="class">
+<dt id="_CPPv27cie_Key">
+<span id="cie_Key"></span><span class="target" id="classcie__Key"></span><em class="property">class </em><code class="descname">cie_Key</code><a class="headerlink" href="#_CPPv27cie_Key" title="Link a questa definizione">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv2N7cie_KeyD0Ev">
+<span id="cie_Key::~cie_Key"></span><span class="target" id="classcie__Key_1a852c2a94b6c15d2a6452539776f0b28c"></span><code class="descname">~cie_Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N7cie_KeyD0Ev" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv2N7cie_Key8exponentE">
+<span id="cie_Key::exponent__byteP"></span><span class="target" id="classcie__Key_1afe0eaccdfab4f87288372c63f23e6af9"></span>byte *<code class="descname">exponent</code><a class="headerlink" href="#_CPPv2N7cie_Key8exponentE" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv2N7cie_Key14exponentLengthE">
+<span id="cie_Key::exponentLength__byte"></span><span class="target" id="classcie__Key_1ab22236cd750cdc446dd4ad5da9b16b8a"></span>byte <code class="descname">exponentLength</code><a class="headerlink" href="#_CPPv2N7cie_Key14exponentLengthE" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv2N7cie_Key7modulusE">
+<span id="cie_Key::modulus__byteP"></span><span class="target" id="classcie__Key_1a434163ac7999315f35b73078f9dd2334"></span>byte *<code class="descname">modulus</code><a class="headerlink" href="#_CPPv2N7cie_Key7modulusE" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv2N7cie_Key13modulusLengthE">
+<span id="cie_Key::modulusLength__word"></span><span class="target" id="classcie__Key_1a07b4749b3ead790275c4177047b1adff"></span>word <code class="descname">modulusLength</code><a class="headerlink" href="#_CPPv2N7cie_Key13modulusLengthE" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv27cie_Nfc">
+<span id="cie_Nfc"></span><span class="target" id="classcie__Nfc"></span><em class="property">class </em><code class="descname">cie_Nfc</code><a class="headerlink" href="#_CPPv27cie_Nfc" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Subclassed by <a class="reference internal" href="#classcie__Nfc__Adafruit"><span class="std std-ref">cie_Nfc_Adafruit</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv2N7cie_Nfc5beginEv">
+<span id="cie_Nfc::begin"></span><span class="target" id="classcie__Nfc_1aff7f7d2bea1c8986ee5e63dec7840732"></span><em class="property">virtual</em> void <code class="descname">begin</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv2N7cie_Nfc5beginEv" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N7cie_Nfc10detectCardEv">
+<span id="cie_Nfc::detectCard"></span><span class="target" id="classcie__Nfc_1ac3365054cb741e0d6d677d84c9a0d8af"></span><em class="property">virtual</em> bool <code class="descname">detectCard</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv2N7cie_Nfc10detectCardEv" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N7cie_Nfc11sendCommandEP4byte4byteP4byteP4word">
+<span id="cie_Nfc::sendCommand__byteP.byte.byteP.wordP"></span><span class="target" id="classcie__Nfc_1ab3bef6364ed5d3437a5d224b80316978"></span><em class="property">virtual</em> bool <code class="descname">sendCommand</code><span class="sig-paren">(</span>byte *<em>command</em>, byte <em>commandLength</em>, byte *<em>response</em>, word *<em>responseLength</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv2N7cie_Nfc11sendCommandEP4byte4byteP4byteP4word" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N7cie_Nfc19generateRandomBytesEP4byteK4wordK4byte">
+<span id="cie_Nfc::generateRandomBytes__byteP.wordC.byteC"></span><span class="target" id="classcie__Nfc_1acb4190cba6ae6df2e93022fc36139430"></span><em class="property">virtual</em> void <code class="descname">generateRandomBytes</code><span class="sig-paren">(</span>byte *<em>buffer</em>, <em class="property">const</em> word <em>offset</em>, <em class="property">const</em> byte <em>length</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv2N7cie_Nfc19generateRandomBytesEP4byteK4wordK4byte" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv216cie_Nfc_Adafruit">
+<span id="cie_Nfc_Adafruit"></span><span class="target" id="classcie__Nfc__Adafruit"></span><em class="property">class </em><code class="descname">cie_Nfc_Adafruit</code><a class="headerlink" href="#_CPPv216cie_Nfc_Adafruit" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classcie__Nfc"><span class="std std-ref">cie_Nfc</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv2N16cie_Nfc_Adafruit16cie_Nfc_AdafruitEv">
+<span id="cie_Nfc_Adafruit::cie_Nfc_Adafruit"></span><span class="target" id="classcie__Nfc__Adafruit_1a07feaf451695a751352816d10378251d"></span><code class="descname">cie_Nfc_Adafruit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N16cie_Nfc_Adafruit16cie_Nfc_AdafruitEv" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Create with the typical breakout wiring, as described by Adafruit: <a class="reference external" href="https://learn.adafruit.com/adafruit-pn532-rfid-nfc/breakout-wiring">https://learn.adafruit.com/adafruit-pn532-rfid-nfc/breakout-wiring</a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N16cie_Nfc_Adafruit16cie_Nfc_AdafruitE4byte4byte4byte4byte">
+<span id="cie_Nfc_Adafruit::cie_Nfc_Adafruit__byte.byte.byte.byte"></span><span class="target" id="classcie__Nfc__Adafruit_1abcf8f75ac61c10f9534e2291fdc4d540"></span><code class="descname">cie_Nfc_Adafruit</code><span class="sig-paren">(</span>byte <em>clk</em>, byte <em>miso</em>, byte <em>mosi</em>, byte <em>ss</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N16cie_Nfc_Adafruit16cie_Nfc_AdafruitE4byte4byte4byte4byte" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Create with a customized wiring. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">clk</span></code>: The CLK pin number </li>
+<li><code class="docutils literal"><span class="pre">miso</span></code>: The MISO pin number </li>
+<li><code class="docutils literal"><span class="pre">mosi</span></code>: The MOSI pin number </li>
+<li><code class="docutils literal"><span class="pre">ss</span></code>: The SS pin number </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N16cie_Nfc_AdafruitD0Ev">
+<span id="cie_Nfc_Adafruit::~cie_Nfc_Adafruit"></span><span class="target" id="classcie__Nfc__Adafruit_1aa329b85019a17123e8b99065101693ec"></span><code class="descname">~cie_Nfc_Adafruit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N16cie_Nfc_AdafruitD0Ev" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Frees resources. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N16cie_Nfc_Adafruit5beginEv">
+<span id="cie_Nfc_Adafruit::begin"></span><span class="target" id="classcie__Nfc__Adafruit_1af13fab67700d6797272a17ac7bd5b969"></span>void <code class="descname">begin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N16cie_Nfc_Adafruit5beginEv" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Initializes the PN532 board. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N16cie_Nfc_Adafruit10detectCardEv">
+<span id="cie_Nfc_Adafruit::detectCard"></span><span class="target" id="classcie__Nfc__Adafruit_1a698174a62361a4be430679942d272102"></span>bool <code class="descname">detectCard</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N16cie_Nfc_Adafruit10detectCardEv" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Attempts at detecting a card (will succeed if a card is present) </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether a card was detected or not </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N16cie_Nfc_Adafruit11sendCommandEP4byte4byteP4byteP4word">
+<span id="cie_Nfc_Adafruit::sendCommand__byteP.byte.byteP.wordP"></span><span class="target" id="classcie__Nfc__Adafruit_1a0918343d9e0fd8d9a22a4c286b549acc"></span>bool <code class="descname">sendCommand</code><span class="sig-paren">(</span>byte *<em>command</em>, byte <em>commandLength</em>, byte *<em>response</em>, word *<em>responseLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N16cie_Nfc_Adafruit11sendCommandEP4byte4byteP4byteP4word" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Sends an APDU command to the CIE via the PN532 terminal and checks whether the response has a valid status word. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">command</span></code>: A pointer to the APDU command bytes </li>
+<li><code class="docutils literal"><span class="pre">commandLength</span></code>: Length of the command </li>
+<li><code class="docutils literal"><span class="pre">response</span></code>: A pointer to the buffer which will contain the response bytes </li>
+<li><code class="docutils literal"><span class="pre">responseLength</span></code>: The length of the desired response</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N16cie_Nfc_Adafruit19generateRandomBytesEP4byteK4wordK4byte">
+<span id="cie_Nfc_Adafruit::generateRandomBytes__byteP.wordC.byteC"></span><span class="target" id="classcie__Nfc__Adafruit_1af91efe11efe3ce38eb23cd584f2e137c"></span>void <code class="descname">generateRandomBytes</code><span class="sig-paren">(</span>byte *<em>buffer</em>, <em class="property">const</em> word <em>offset</em>, <em class="property">const</em> byte <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N16cie_Nfc_Adafruit19generateRandomBytesEP4byteK4wordK4byte" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Populates a buffer with random generated bytes. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">buffer</span></code>: The pointer to a byte array </li>
+<li><code class="docutils literal"><span class="pre">offset</span></code>: The starting offset in the buffer </li>
+<li><code class="docutils literal"><span class="pre">length</span></code>: The number of random bytes to generate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Members</p>
+<dl class="member">
+<dt id="_CPPv2N16cie_Nfc_Adafruit4_nfcE">
+<span id="cie_Nfc_Adafruit::_nfc__Adafruit_PN532P"></span><span class="target" id="classcie__Nfc__Adafruit_1aa19dccce475e61fe18715e1e23f199d0"></span>Adafruit_PN532 *<code class="descname">_nfc</code><a class="headerlink" href="#_CPPv2N16cie_Nfc_Adafruit4_nfcE" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="_CPPv29cie_PN532">
 <span id="cie_PN532"></span><span class="target" id="classcie__PN532"></span><em class="property">class </em><code class="descname">cie_PN532</code><a class="headerlink" href="#_CPPv29cie_PN532" title="Link a questa definizione">¶</a><br /></dt>
 <dd><div class="breathe-sectiondef docutils container">
@@ -546,11 +708,22 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dt id="_CPPv2N9cie_PN5329cie_PN532E4byte4byte4byte4byte">
 <span id="cie_PN532::cie_PN532__byte.byte.byte.byte"></span><span class="target" id="classcie__PN532_1a2b0f7beddebdbebd17d8d0bb39dd8f30"></span><code class="descname">cie_PN532</code><span class="sig-paren">(</span>byte <em>clk</em>, byte <em>miso</em>, byte <em>mosi</em>, byte <em>ss</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN5329cie_PN532E4byte4byte4byte4byte" title="Link a questa definizione">¶</a><br /></dt>
 <dd><p>Create with a customized wiring. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">clk</span></code>: The CLK pin number </li>
+<li><code class="docutils literal"><span class="pre">miso</span></code>: The MISO pin number </li>
+<li><code class="docutils literal"><span class="pre">mosi</span></code>: The MOSI pin number </li>
+<li><code class="docutils literal"><span class="pre">ss</span></code>: The SS pin number </li>
+</ul>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="_CPPv2N9cie_PN5329cie_PN532EP14Adafruit_PN532">
-<span id="cie_PN532::cie_PN532__Adafruit_PN532P"></span><span class="target" id="classcie__PN532_1ac4533e38683f295bdafdfa89f9bb666b"></span><code class="descname">cie_PN532</code><span class="sig-paren">(</span>Adafruit_PN532 *<em>nfc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN5329cie_PN532EP14Adafruit_PN532" title="Link a questa definizione">¶</a><br /></dt>
+<dt id="_CPPv2N9cie_PN5329cie_PN532EP7cie_Nfc">
+<span id="cie_PN532::cie_PN532__cie_NfcP"></span><span class="target" id="classcie__PN532_1a52b6ee7eddb2fb2f646d10095db33024"></span><code class="descname">cie_PN532</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv27cie_Nfc" title="cie_Nfc">cie_Nfc</a> *<em>nfc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN5329cie_PN532EP7cie_Nfc" title="Link a questa definizione">¶</a><br /></dt>
 <dd><p>Create with a custom instance of the Adafruit_PN532 class. </p>
 </dd></dl>
 
@@ -563,7 +736,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dl class="function">
 <dt id="_CPPv2N9cie_PN5325beginEv">
 <span id="cie_PN532::begin__void"></span><span class="target" id="classcie__PN532_1a62bdc53c85283fcc50db2b63971731d9"></span>void <code class="descname">begin</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN5325beginEv" title="Link a questa definizione">¶</a><br /></dt>
-<dd><p>Initialize the PN532 board. </p>
+<dd><p>Initializes the PN532 board. </p>
 </dd></dl>
 
 <dl class="function">
@@ -641,16 +814,15 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 </dd></dl>
 
 <dl class="function">
-<dt id="_CPPv2N9cie_PN53216read_EF_Int_KpubEP4byteP4word">
-<span id="cie_PN532::read_EF_Int_Kpub__byteP.wordP"></span><span class="target" id="classcie__PN532_1a8c60845484ddc5b9767762ab10187e9e"></span>bool <code class="descname">read_EF_Int_Kpub</code><span class="sig-paren">(</span>byte *<em>contentBuffer</em>, word *<em>contentLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53216read_EF_Int_KpubEP4byteP4word" title="Link a questa definizione">¶</a><br /></dt>
-<dd><p>Reads the binary content of the EF_Int_Kpub elementary file. </p>
+<dt id="_CPPv2N9cie_PN53216read_EF_Int_KpubEP7cie_Key">
+<span id="cie_PN532::read_EF_Int_Kpub__cie_KeyP"></span><span class="target" id="classcie__PN532_1a03c9a70f76ace36d867395934f89e5e3"></span>bool <code class="descname">read_EF_Int_Kpub</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv27cie_Key" title="cie_Key">cie_Key</a> *<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53216read_EF_Int_KpubEP7cie_Key" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Reads the binary content of the EF.Int.Kpub elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
+<li><code class="docutils literal"><span class="pre">key</span></code>: The pointer to a <a class="reference internal" href="#classcie__Key"><span class="std std-ref">cie_Key</span></a> object which will be populated with the modulus and exponent values</li>
 </ul>
 </dd>
 </dl>
@@ -658,18 +830,28 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 </dd></dl>
 
 <dl class="function">
-<dt id="_CPPv2N9cie_PN53224read_EF_Servizi_Int_KpubEP4byteP4word">
-<span id="cie_PN532::read_EF_Servizi_Int_Kpub__byteP.wordP"></span><span class="target" id="classcie__PN532_1a364df50e3080017493eb2d0c3084068d"></span>bool <code class="descname">read_EF_Servizi_Int_Kpub</code><span class="sig-paren">(</span>byte *<em>contentBuffer</em>, word *<em>contentLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53224read_EF_Servizi_Int_KpubEP4byteP4word" title="Link a questa definizione">¶</a><br /></dt>
-<dd><p>Reads the binary content of the EF_Servizi_Int_Kpub elementary file. </p>
+<dt id="_CPPv2N9cie_PN53224read_EF_Servizi_Int_KpubEP7cie_Key">
+<span id="cie_PN532::read_EF_Servizi_Int_Kpub__cie_KeyP"></span><span class="target" id="classcie__PN532_1aafe38556f0d7eb1e6d4d83e105cff329"></span>bool <code class="descname">read_EF_Servizi_Int_Kpub</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv27cie_Key" title="cie_Key">cie_Key</a> *<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53224read_EF_Servizi_Int_KpubEP7cie_Key" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Reads the binary content of the EF.Servizi_Int.Kpub elementary file. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
+<li><code class="docutils literal"><span class="pre">key</span></code>: The pointer to a <a class="reference internal" href="#classcie__Key"><span class="std std-ref">cie_Key</span></a> object which will be populated with the modulus and exponent values</li>
 </ul>
 </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53211isCardValidEv">
+<span id="cie_PN532::isCardValid"></span><span class="target" id="classcie__PN532_1a517f00e03004f025fba05368777a2e91"></span>bool <code class="descname">isCardValid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53211isCardValidEv" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Performs the challenge/response algorithm with the SDO.Int_Servizi.Kpub to check where this is a valid or cloned card. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the card is valid or not </dd>
 </dl>
 </p>
 </dd></dl>
@@ -713,9 +895,35 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 </dd></dl>
 
 <dl class="function">
-<dt id="_CPPv2N9cie_PN5328printHexEP4byte4word">
-<span id="cie_PN532::printHex__byteP.word"></span><span class="target" id="classcie__PN532_1a991c44c5f24dc9bf9c9a195010418f0d"></span>void <code class="descname">printHex</code><span class="sig-paren">(</span>byte *<em>buffer</em>, word <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN5328printHexEP4byte4word" title="Link a questa definizione">¶</a><br /></dt>
-<dd><p>Dumps all values present in the CIE. </p>
+<dt id="_CPPv2N9cie_PN5327readKeyEK10cie_EFPathP7cie_Key">
+<span id="cie_PN532::readKey__cie_EFPathC.cie_KeyP"></span><span class="target" id="classcie__PN532_1a75670e27c42d9b04d17bfdb5979d4435"></span>bool <code class="descname">readKey</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv210cie_EFPath" title="cie_EFPath">cie_EFPath</a> <em>filePath</em>, <a class="reference internal" href="#_CPPv27cie_Key" title="cie_Key">cie_Key</a> *<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN5327readKeyEK10cie_EFPathP7cie_Key" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Reads the key content (BER encoded modulus and exponent) from the indicated Elementary File. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">filePath</span></code>: a structure indicating the parent Dedicated File (either ROOT_MF or CIE_DF), the selection mode (either SELECT_BY_EFID or SELECT_BY_SFI) and the file identifier (either a sfi or an efid) </li>
+<li><code class="docutils literal"><span class="pre">key</span></code>: A pointer to a which object which will be populated with the modulus and exponent</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN5328printHexEP4byteK4word">
+<span id="cie_PN532::printHex__byteP.wordC"></span><span class="target" id="classcie__PN532_1ab57fd54394ccc3aaabac20ab124d5bdb"></span>void <code class="descname">printHex</code><span class="sig-paren">(</span>byte *<em>buffer</em>, <em class="property">const</em> word <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN5328printHexEP4byteK4word" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Prints an hex representation of a buffer. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">buffer</span></code>: The pointer to the byte buffer </li>
+<li><code class="docutils literal"><span class="pre">length</span></code>: The length of the buffer </li>
+</ul>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="function">
@@ -727,8 +935,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: The pointer to data containing the contents of the file </li>
-<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the file</li>
+<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The reported length of the file</li>
 </ul>
 </dd>
 </dl>
@@ -753,11 +960,66 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 
 </div>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv2N9cie_PN5327verboseE">
+<span id="cie_PN532::verbose__b"></span><span class="target" id="classcie__PN532_1ac8feae3224bd80cbdfa762e44be3ce7c"></span>bool <code class="descname">verbose</code><a class="headerlink" href="#_CPPv2N9cie_PN5327verboseE" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Private Functions</p>
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53211sendCommandEP4byteK4byteP4byteP4word">
+<span id="cie_PN532::sendCommand__byteP.byteC.byteP.wordP"></span><span class="target" id="classcie__PN532_1a663372492bb14f5ca3d1be2b74d3c650"></span>bool <code class="descname">sendCommand</code><span class="sig-paren">(</span>byte *<em>command</em>, <em class="property">const</em> byte <em>commandLength</em>, byte *<em>response</em>, word *<em>responseLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53211sendCommandEP4byteK4byteP4byteP4word" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Sends an APDU command to the CIE via the PN532 terminal and checks whether the response has a valid status word. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">command</span></code>: A pointer to the APDU command bytes </li>
+<li><code class="docutils literal"><span class="pre">commandLength</span></code>: Length of the command </li>
+<li><code class="docutils literal"><span class="pre">response</span></code>: A pointer to the buffer which will contain the response bytes </li>
+<li><code class="docutils literal"><span class="pre">responseLength</span></code>: The length of the desired response</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="_CPPv2N9cie_PN53210initFieldsEv">
 <span id="cie_PN532::initFields"></span><span class="target" id="classcie__PN532_1a4721194e7e3515e145263fa0418e1c9d"></span>void <code class="descname">initFields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53210initFieldsEv" title="Link a questa definizione">¶</a><br /></dt>
 <dd><p>Set default values to some private fields. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53211sendCommandEP4byteK4word">
+<span id="cie_PN532::sendCommand__byteP.wordC"></span><span class="target" id="classcie__PN532_1a9adca44e8ea65c126f64429b1b3e5a1d"></span>bool <code class="descname">sendCommand</code><span class="sig-paren">(</span>byte *<em>command</em>, <em class="property">const</em> word <em>commandLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53211sendCommandEP4byteK4word" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Sends an APDU command which won’t return any data to the CIE via the PN532 terminal and checks whether the response has a valid status word. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">command</span></code>: A pointer to the APDU command bytes </li>
+<li><code class="docutils literal"><span class="pre">commandLength</span></code>: Length of the command</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53228select_SDO_Servizi_Int_KprivEv">
+<span id="cie_PN532::select_SDO_Servizi_Int_Kpriv"></span><span class="target" id="classcie__PN532_1add68cd334b89ade6026a07968e89a127"></span>bool <code class="descname">select_SDO_Servizi_Int_Kpriv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53228select_SDO_Servizi_Int_KprivEv" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Selects the SDO.Servizi_Int.Kpriv private key for internal authentication. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="function">
@@ -784,14 +1046,29 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dl class="function">
 <dt id="_CPPv2N9cie_PN53230ensureElementaryFileIsSelectedEK10cie_EFPath">
 <span id="cie_PN532::ensureElementaryFileIsSelected__cie_EFPathC"></span><span class="target" id="classcie__PN532_1a4563d228fddd9008e8c01119185cc7b7"></span>bool <code class="descname">ensureElementaryFileIsSelected</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv210cie_EFPath" title="cie_EFPath">cie_EFPath</a> <em>filePath</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53230ensureElementaryFileIsSelectedEK10cie_EFPath" title="Link a questa definizione">¶</a><br /></dt>
-<dd><p>Selects an Elementary file. </p>
+<dd><p>Ensures an Elementary file is selected (does nothing if it was already selected) </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A boolean value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">df</span></code>: The containing Dedicated File (either ROOT_MF or CIE_DF) </li>
-<li><code class="docutils literal"><span class="pre">efid</span></code>: The efid of the Elementary File (must be two bytes)</li>
+<li><code class="docutils literal"><span class="pre">filePath</span></code>: a structure indicating the parent Dedicated File (either ROOT_MF or CIE_DF), the selection mode (either SELECT_BY_EFID or SELECT_BY_SFI) and the file identifier (either a sfi or an efid)</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53219ensureSdoIsSelectedEK10cie_EFPath">
+<span id="cie_PN532::ensureSdoIsSelected__cie_EFPathC"></span><span class="target" id="classcie__PN532_1abb75dfbfb90fc29d85a3afc9107a44ac"></span>bool <code class="descname">ensureSdoIsSelected</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv210cie_EFPath" title="cie_EFPath">cie_EFPath</a> <em>filePath</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53219ensureSdoIsSelectedEK10cie_EFPath" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Ensures an elementary file is selected by its SDO ID, that is by sending an MSE mode SET (with AT template) command. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">filePath</span></code>: a structure indicating the parent Dedicated File (either ROOT_MF or CIE_DF), the selection mode (either SELECT_BY_EFID or SELECT_BY_SFI) and the file identifier (either a sfi or an efid)</li>
 </ul>
 </dd>
 </dl>
@@ -858,7 +1135,8 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 <dd>A value indicating whether the operation succeeded or not </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">response</span></code>: Pointer to the response data</li>
+<li><code class="docutils literal"><span class="pre">response</span></code>: Pointer to the response data </li>
+<li><code class="docutils literal"><span class="pre">responseLength</span></code>: The length of the response</li>
 </ul>
 </dd>
 </dl>
@@ -882,12 +1160,103 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 </p>
 </dd></dl>
 
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53224establishSecureMessagingEv">
+<span id="cie_PN532::establishSecureMessaging"></span><span class="target" id="classcie__PN532_1a0710075e6e9f67d3d466a5e5a8c50563"></span>bool <code class="descname">establishSecureMessaging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53224establishSecureMessagingEv" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Establishes a secure messaging context by performing mutual authentication. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53212getChallengeEP4byteP4word">
+<span id="cie_PN532::getChallenge__byteP.wordP"></span><span class="target" id="classcie__PN532_1a787a0f343e9e24bb84d334dacfb94a0d"></span>bool <code class="descname">getChallenge</code><span class="sig-paren">(</span>byte *<em>contentBuffer</em>, word *<em>contentLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53212getChallengeEP4byteP4word" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Reads the binary content of an Elementary File given its Dedicated File and EFID or SFI identifier. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">contentBuffer</span></code>: Pointer to the response data </li>
+<li><code class="docutils literal"><span class="pre">contentLength</span></code>: The length of the response</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53218mutualAuthenticateEP4byteK4byteP4byteK4byte">
+<span id="cie_PN532::mutualAuthenticate__byteP.byteC.byteP.byteC"></span><span class="target" id="classcie__PN532_1a3459fd62b743e9fd6cef37a2816a9a41"></span>bool <code class="descname">mutualAuthenticate</code><span class="sig-paren">(</span>byte *<em>snIccBuffer</em>, <em class="property">const</em> byte <em>snIccBufferLength</em>, byte *<em>rndIccBuffer</em>, <em class="property">const</em> byte <em>rndIccBufferLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53218mutualAuthenticateEP4byteK4byteP4byteK4byte" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Performs mutual authentication. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">snIccBuffer</span></code>: A pointer to the buffer containing the SN.ICC (card serial number) </li>
+<li><code class="docutils literal"><span class="pre">snIccBufferLength</span></code>: The length of the SN.ICC buffer </li>
+<li><code class="docutils literal"><span class="pre">rndIccBuffer</span></code>: A pointer to the buffer containing the RND.ICC (a random number generated by the card chip) </li>
+<li><code class="docutils literal"><span class="pre">rndIccBufferLength</span></code>: The length of the RND.ICC buffer</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53220internalAuthenticateEP4byteP4wordP4byteK4byte">
+<span id="cie_PN532::internalAuthenticate__byteP.wordP.byteP.byteC"></span><span class="target" id="classcie__PN532_1a4e11a50f19c35ccc83f8c89b8c695bb8"></span>bool <code class="descname">internalAuthenticate</code><span class="sig-paren">(</span>byte *<em>responseBuffer</em>, word *<em>responseLength</em>, byte *<em>challenge</em>, <em class="property">const</em> byte <em>challengeLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53220internalAuthenticateEP4byteP4wordP4byteK4byte" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Performs internal authentication. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the operation succeeded or not </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">responseBuffer</span></code>: A pointer to the buffer which will contain the response for the internal authentication command </li>
+<li><code class="docutils literal"><span class="pre">responseLength</span></code>: The length of the response </li>
+<li><code class="docutils literal"><span class="pre">challenge</span></code>: A pointer to the challenge </li>
+<li><code class="docutils literal"><span class="pre">challengeLength</span></code>: The length of the provided challenge</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53234verifyInternalAuthenticateResponseEP7cie_KeyP4byteK4wordPK4byteK4word">
+<span id="cie_PN532::verifyInternalAuthenticateResponse__cie_KeyP.byteP.wordC.byteCP.wordC"></span><span class="target" id="classcie__PN532_1a2dcf4a486bb8e8825c36a5d23f93e06a"></span>bool <code class="descname">verifyInternalAuthenticateResponse</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv27cie_Key" title="cie_Key">cie_Key</a> *<em>pubKey</em>, byte *<em>cypher</em>, <em class="property">const</em> word <em>cypherLength</em>, <em class="property">const</em> byte *<em>message</em>, <em class="property">const</em> word <em>messageLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53234verifyInternalAuthenticateResponseEP7cie_KeyP4byteK4wordPK4byteK4word" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Verify if the response returned for an INTERNAL AUTHENTICATE command is valid. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A boolean value indicating whether the response was valid or not </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">pubKey</span></code>: A pointer to public key that is going to be used for decryption </li>
+<li><code class="docutils literal"><span class="pre">cypher</span></code>: The encrypted response returned for the INTERNAL AUTHENTICATE command </li>
+<li><code class="docutils literal"><span class="pre">cypherLength</span></code>: The length of the cypher, should be the same size of the public key modulus </li>
+<li><code class="docutils literal"><span class="pre">message</span></code>: A pointer to the original message to be verified </li>
+<li><code class="docutils literal"><span class="pre">messageLength</span></code>: The length of the message</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N9cie_PN53211calculateSkEK4byteP4byteP4byteP4byteP4byte">
+<span id="cie_PN532::calculateSk__byteC.byteP.byteP.byteP.byteP"></span><span class="target" id="classcie__PN532_1a983be1f77f04d052ada85ca66a77e018"></span>void <code class="descname">calculateSk</code><span class="sig-paren">(</span><em class="property">const</em> byte <em>valueType</em>, byte *<em>kIfd</em>, byte *<em>kIcc</em>, byte *<em>sk</em>, byte *<em>skLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N9cie_PN53211calculateSkEK4byteP4byteP4byteP4byteP4byte" title="Link a questa definizione">¶</a><br /></dt>
+<dd></dd></dl>
+
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Private Members</p>
 <dl class="member">
 <dt id="_CPPv2N9cie_PN5324_nfcE">
-<span id="cie_PN532::_nfc__Adafruit_PN532P"></span><span class="target" id="classcie__PN532_1a47be5283778f4bbeb4e5342ed76e6e10"></span>Adafruit_PN532 *<code class="descname">_nfc</code><a class="headerlink" href="#_CPPv2N9cie_PN5324_nfcE" title="Link a questa definizione">¶</a><br /></dt>
+<span id="cie_PN532::_nfc__cie_NfcP"></span><span class="target" id="classcie__PN532_1a8884c837187eb003777469bb3d18ad68"></span><a class="reference internal" href="#_CPPv27cie_Nfc" title="cie_Nfc">cie_Nfc</a> *<code class="descname">_nfc</code><a class="headerlink" href="#_CPPv2N9cie_PN5324_nfcE" title="Link a questa definizione">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="member">
@@ -907,7 +1276,7 @@ Il risultato visualizzato è frutto dell’integrazione tra Doxygen e Sphinx.</p
 
 <dl class="member">
 <dt id="_CPPv2N9cie_PN53222_currentElementaryFileE">
-<span id="cie_PN532::_currentElementaryFile__word"></span><span class="target" id="classcie__PN532_1abf1f7b8f699509bd0d0ca484ae30697c"></span>word <code class="descname">_currentElementaryFile</code><a class="headerlink" href="#_CPPv2N9cie_PN53222_currentElementaryFileE" title="Link a questa definizione">¶</a><br /></dt>
+<span id="cie_PN532::_currentElementaryFile__unsigned-l"></span><span class="target" id="classcie__PN532_1a8d28836223bff94b87456bae67727cea"></span>unsigned long <code class="descname">_currentElementaryFile</code><a class="headerlink" href="#_CPPv2N9cie_PN53222_currentElementaryFileE" title="Link a questa definizione">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -1023,6 +1392,63 @@ Definition of the <a class="reference internal" href="#structcie__EFPath"><span 
 
 <dl class="file">
 <dt>
+<span class="target" id="cie__Key_8cpp"></span><em>file</em> <code class="descname">cie_Key.cpp</code></dt>
+<dd><em>#include «cie_Key.h»</em><p>
+Implementation of the <a class="reference internal" href="#classcie__Key"><span class="std std-ref">cie_Key</span></a> class describing an encryption key<dl class="docutils">
+<dt><strong>Author</strong></dt>
+<dd>Developers Italia  BSD (see License)</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="file">
+<dt>
+<span class="target" id="cie__Key_8h"></span><em>file</em> <code class="descname">cie_Key.h</code></dt>
+<dd><em>#include &lt;Arduino.h&gt;</em><p>
+Definition of the <a class="reference internal" href="#classcie__Key"><span class="std std-ref">cie_Key</span></a> class describing an encryption key<dl class="docutils">
+<dt><strong>Author</strong></dt>
+<dd>Developers Italia  BSD (see License)</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="file">
+<dt>
+<span class="target" id="cie__Nfc_8h"></span><em>file</em> <code class="descname">cie_Nfc.h</code></dt>
+<dd><em>#include &lt;Arduino.h&gt;</em><p>
+An interface needed by <a class="reference internal" href="#classcie__PN532"><span class="std std-ref">cie_PN532</span></a> as a decoupling abstraction to the underlying PN532 communication library<dl class="docutils">
+<dt><strong>Author</strong></dt>
+<dd>Developers Italia  BSD (see License)</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="file">
+<dt>
+<span class="target" id="cie__Nfc__Adafruit_8cpp"></span><em>file</em> <code class="descname">cie_Nfc_Adafruit.cpp</code></dt>
+<dd><em>#include «cie_Nfc_Adafruit.h»</em><p>
+Implementation of the <a class="reference internal" href="#classcie__Nfc"><span class="std std-ref">cie_Nfc</span></a> abstract class using the Adafruit_PN532 library<dl class="docutils">
+<dt><strong>Author</strong></dt>
+<dd>Developers Italia  BSD (see License)</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="macro">
+<dt>
+<span class="target" id="cie__Nfc__Adafruit_8cpp_1af1c2e36c6022e42c193ec5110244f094"></span><code class="descname">PN532DEBUGPRINT</code></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="file">
+<dt>
+<span class="target" id="cie__Nfc__Adafruit_8h"></span><em>file</em> <code class="descname">cie_Nfc_Adafruit.h</code></dt>
+<dd><em>#include &lt;Adafruit_PN532.h&gt;</em><em>#include «cie_Nfc.h»</em></dd></dl>
+
+<dl class="file">
+<dt>
 <span class="target" id="cie__PN532_8cpp"></span><em>file</em> <code class="descname">cie_PN532.cpp</code></dt>
 <dd><em>#include «cie_PN532.h»</em><p>
 This is a library for the PN532 NFC/RFID breakout boards This library works with the Adafruit NFC breakout -&gt; <a class="reference external" href="https://www.adafruit.com/products/364">https://www.adafruit.com/products/364</a><dl class="docutils">
@@ -1039,12 +1465,33 @@ This is a library for the PN532 NFC/RFID breakout boards This library works with
 <dd></dd></dl>
 
 </div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv211calculateSkK4byteP4byteP4byteP4byteP4byte">
+<span id="calculateSk__byteC.byteP.byteP.byteP.byteP"></span><span class="target" id="cie__PN532_8cpp_1a9a96de258f349eabb3266f3326d11fbe"></span>void <code class="descname">calculateSk</code><span class="sig-paren">(</span><em class="property">const</em> byte <em>valueType</em>, byte *<em>kIfd</em>, byte *<em>kIcc</em>, byte *<em>sk</em>, byte *<em>skLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv211calculateSkK4byteP4byteP4byteP4byteP4byte" title="Link a questa definizione">¶</a><br /></dt>
+<dd><p>Calculates the SKENC or the SKMAC session key from the K.IFD and K.ICC random values. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">valueType</span></code>: The type of the value (either SK_ENC or SK_MAC) </li>
+<li><code class="docutils literal"><span class="pre">kIfd</span></code>: The pointer to the K.IFD generated by the terminal (must be of K_LENGTH bytes) </li>
+<li><code class="docutils literal"><span class="pre">kIcc</span></code>: The pointer to the K.ICC generated by the card (must be of K_LENGTH bytes) </li>
+<li><code class="docutils literal"><span class="pre">sk</span></code>: A pointer to a buffer which will contain the computed SKENC or SKMAC </li>
+<li><code class="docutils literal"><span class="pre">skLength</span></code>: The reported length of the session key </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
 </dd></dl>
 
 <dl class="file">
 <dt>
 <span class="target" id="cie__PN532_8h"></span><em>file</em> <code class="descname">cie_PN532.h</code></dt>
-<dd><em>#include &lt;Adafruit_PN532.h&gt;</em><em>#include «cie_EFPath.h»</em><em>#include «cie_AtrReader.h»</em><em>#include «cie_BerReader.h»</em><p>
+<dd><em>#include &lt;BigNumber.h&gt;</em><em>#include «cie_EFPath.h»</em><em>#include «cie_AtrReader.h»</em><em>#include «cie_BerReader.h»</em><em>#include «cie_Key.h»</em><em>#include «cie_Nfc_Adafruit.h»</em><p>
 This is a library for the PN532 NFC/RFID breakout boards This library works with the Adafruit NFC breakout -&gt; <a class="reference external" href="https://www.adafruit.com/products/364">https://www.adafruit.com/products/364</a><dl class="docutils">
 <dt><strong>Author</strong></dt>
 <dd>Developers Italia  BSD (see License)</dd>
@@ -1053,26 +1500,6 @@ This is a library for the PN532 NFC/RFID breakout boards This library works with
 <p>Check out the links above for our tutorials and wiring diagrams These chips use SPI or I2C to communicate. This library uses SPI to communicate.</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Defines</p>
-<dl class="macro">
-<dt id="c.PN532_SCK">
-<span class="target" id="cie__PN532_8h_1a19c0d6db90035329695896e259b0da38"></span><code class="descname">PN532_SCK</code><a class="headerlink" href="#c.PN532_SCK" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="macro">
-<dt id="c.PN532_MOSI">
-<span class="target" id="cie__PN532_8h_1acaae8222f874e7ae5c75325213ccb54a"></span><code class="descname">PN532_MOSI</code><a class="headerlink" href="#c.PN532_MOSI" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="macro">
-<dt id="c.PN532_SS">
-<span class="target" id="cie__PN532_8h_1a5fe7fdc589cffb666bd7ebf2a963ea63"></span><code class="descname">PN532_SS</code><a class="headerlink" href="#c.PN532_SS" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="macro">
-<dt id="c.PN532_MISO">
-<span class="target" id="cie__PN532_8h_1a7cc71e42d70cfd7298b007770c37ec60"></span><code class="descname">PN532_MISO</code><a class="headerlink" href="#c.PN532_MISO" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="macro">
 <dt id="c.PN532_IRQ">
 <span class="target" id="cie__PN532_8h_1a04eeb1db4f8381537f1075bb5abd4b36"></span><code class="descname">PN532_IRQ</code><a class="headerlink" href="#c.PN532_IRQ" title="Link a questa definizione">¶</a></dt>
@@ -1104,6 +1531,26 @@ This is a library for the PN532 NFC/RFID breakout boards This library works with
 <dd></dd></dl>
 
 <dl class="macro">
+<dt id="c.STATUS_WORD_LENGTH">
+<span class="target" id="cie__PN532_8h_1a25adf3cfda677d50b707f97fd51a7b76"></span><code class="descname">STATUS_WORD_LENGTH</code><a class="headerlink" href="#c.STATUS_WORD_LENGTH" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.CHALLENGE_LENGTH">
+<span class="target" id="cie__PN532_8h_1a010b67ae5038f72bd7d06c5ce1f1e223"></span><code class="descname">CHALLENGE_LENGTH</code><a class="headerlink" href="#c.CHALLENGE_LENGTH" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.K_LENGTH">
+<span class="target" id="cie__PN532_8h_1aef73583cecc8265f88d2ed3f097353c5"></span><code class="descname">K_LENGTH</code><a class="headerlink" href="#c.K_LENGTH" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.SK_LENGTH">
+<span class="target" id="cie__PN532_8h_1a2cd1ce33fb6b90f22056e13170fa394a"></span><code class="descname">SK_LENGTH</code><a class="headerlink" href="#c.SK_LENGTH" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
 <dt id="c.FIXED_LENGTH">
 <span class="target" id="cie__PN532_8h_1ac26468a604fc992cddea01a640714811"></span><code class="descname">FIXED_LENGTH</code><a class="headerlink" href="#c.FIXED_LENGTH" title="Link a questa definizione">¶</a></dt>
 <dd></dd></dl>
@@ -1129,6 +1576,11 @@ This is a library for the PN532 NFC/RFID breakout boards This library works with
 <dd></dd></dl>
 
 <dl class="macro">
+<dt id="c.SELECT_BY_SDOID">
+<span class="target" id="cie__PN532_8h_1a8c6242dce800168344274d119f75b3e6"></span><code class="descname">SELECT_BY_SDOID</code><a class="headerlink" href="#c.SELECT_BY_SDOID" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
 <dt id="c.NULL_DF">
 <span class="target" id="cie__PN532_8h_1aadefafd9c84e741cae8a2b18406bcad6"></span><code class="descname">NULL_DF</code><a class="headerlink" href="#c.NULL_DF" title="Link a questa definizione">¶</a></dt>
 <dd></dd></dl>
@@ -1148,86 +1600,18 @@ This is a library for the PN532 NFC/RFID breakout boards This library works with
 <span class="target" id="cie__PN532_8h_1a5583b85a8b9d05fc1196f13787578b6c"></span><code class="descname">CIE_DF</code><a class="headerlink" href="#c.CIE_DF" title="Link a questa definizione">¶</a></dt>
 <dd></dd></dl>
 
-</div>
-</dd></dl>
-
-<!-- <dl class="file">
-<dt>
-<span class="target" id="README_8md"></span><em>file</em> <code class="descname">README.md</code></dt>
+<dl class="macro">
+<dt id="c.SK_ENC">
+<span class="target" id="cie__PN532_8h_1a07ea6f4f86202ae72434cd2a1b217908"></span><code class="descname">SK_ENC</code><a class="headerlink" href="#c.SK_ENC" title="Link a questa definizione">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="page">
-<dt>
-<span class="target" id="md_README"></span><em>page</em> <code class="descname">md_README</code></dt>
-<dd><p>Arduino library for SPI access to the PN532 NFC chip in the Italian Electronic Identity Card (CIE).</p>
-<p><em>Prerequisites</em></p>
-<p>This library depends upon the <strong>Adafruit_PN532</strong> library which you can obtain from its GitHub Repository.</p>
-<p><a class="reference external" href="https://github.com/adafruit/Adafruit-PN532">https://github.com/adafruit/Adafruit-PN532</a></p>
-<p>You must install both the Adafruit_PN532 and <a class="reference internal" href="#classcie__PN532"><span class="std std-ref">cie_PN532</span></a> in your Arduino <em>libraries</em> directory. Plese follow the instructions from the Arduino guide.</p>
-<p><a class="reference external" href="https://www.arduino.cc/en/Guide/Libraries">https://www.arduino.cc/en/Guide/Libraries</a></p>
-<p><em>Wiring PN532 breakout to the Arduino Uno for SPI communication</em></p>
-<p>At present, just the SPI connection is supported. The examples provided will work with this wiring.</p>
-<p><img alt="_images/pn532-wiring-spi.png" src="_images/pn532-wiring-spi.png" /></p>
-<p>This wiring is also described in detail on this page at the Adafruit website.</p>
-<p><a class="reference external" href="https://learn.adafruit.com/adafruit-pn532-rfid-nfc/breakout-wiring">https://learn.adafruit.com/adafruit-pn532-rfid-nfc/breakout-wiring</a></p>
-<p><em>Getting started</em></p>
-<p>Create a new arduino project and set it up like this: <div class="highlight-default"><div class="highlight"><pre><span></span>{C++}
-//Include some libraries
-#include &lt;Wire.h&gt;
-#include &lt;SPI.h&gt;
-#include &lt;cie_PN532.h&gt;
+<dl class="macro">
+<dt id="c.SK_MAC">
+<span class="target" id="cie__PN532_8h_1aed11e906a422f8bc5e0efd32eb61b0c6"></span><code class="descname">SK_MAC</code><a class="headerlink" href="#c.SK_MAC" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
 
-//Use the cie_PN532 with the typical wiring, as pointed out above
-cie_PN532 cie();
-
-void setup(void) {
-  #ifndef ESP8266
-    while (!Serial); // for Leonardo/Micro/Zero
-  #endif
-  Serial.begin(115200);
-  //Initialize the PN532 breakout board
-  cie.begin();
-}
-</pre></div>
 </div>
- Then, in your loop, wait for a card then read its ID_Servizi (a low-security unique identifier)</p>
-<p><div class="highlight-default"><div class="highlight"><pre><span></span>{C++}
-void loop(void) {
-  //Let&#39;s see if a card is present
-  bool cardDetected = cie.detectCard();
-  if (!cardDetected) {
-    //No card present, we wait for one
-    delay(100);
-    return;
-  }
-
-  //Good! A card is present, let&#39;s read the ID!
-  word bufferLength = EF_ID_SERVIZI_LENGTH;
-  byte buffer[EF_ID_SERVIZI_LENGTH];
-
-  if (!cie.read_EF_ID_Servizi(buffer, &amp;bufferLength)) {
-    Serial.print(F(&quot;Error reading EF.ID_SERVIZI&quot;));
-    delay(1000);
-    return;
-  }
-
-  //We were able to read the ID_Servizi, print it out!
-  Serial.print(F(&quot;EF.ID_Servizi: &quot;));
-  cie.printHex(buffer, bufferLength);
-}
-</pre></div>
-</div>
-</p>
-<p><em>More examples</em></p>
-<p>This library comes with an <em>examples</em> directory. You can load and run examples from the Arduino IDE by clicking the File menu -&gt; Examples -&gt; cie 532.</p>
-<p><em>Useful links</em></p>
-<p><ul class="simple">
-<li>The CIE 3.0 chip specification (italian) <a class="reference external" href="http://www.agid.gov.it/sites/default/files/documentazione/cie_3.0_-_specifiche_chip.pdf">http://www.agid.gov.it/sites/default/files/documentazione/cie_3.0_-_specifiche_chip.pdf</a></li>
-<li>Technical specification for the European Card for e-Services and National e-ID Applications <a class="reference external" href="http://www.unsads.com/specs/IASECC/IAS_ECC_v1.0.1_UK.pdf">http://www.unsads.com/specs/IASECC/IAS_ECC_v1.0.1_UK.pdf</a></li>
-<li>Specifiche tecniche del documento digitale unificato (italian) <a class="reference external" href="http://www.agid.gov.it/sites/default/files/leggi_decreti_direttive/specifiche_tecniche_del_documento_digitale_unificato_v.1.0.0.pdf">http://www.agid.gov.it/sites/default/files/leggi_decreti_direttive/specifiche_tecniche_del_documento_digitale_unificato_v.1.0.0.pdf</a> </li>
-</ul>
-</p>
-</dd></dl> -->
+</dd></dl>
 
 </div>
 </div>
